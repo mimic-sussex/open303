@@ -44,7 +44,7 @@ namespace rosic
     /** Sets the sample-rate (in Hz). */
     void setSampleRate(double newSampleRate);
 
-    /** Sets up the waveform continuously between saw and square - the input should be in the range 
+    /** Sets up the waveform continuously between saw and square - the input should be in the range
     0...1 where 0 means pure saw and 1 means pure square. */
     void setWaveform(double newWaveform) { oscillator.setBlendFactor(newWaveform); }
 
@@ -52,17 +52,17 @@ namespace rosic
     void setTuning(double newTuning) { tuning = newTuning; }
 
     /** Sets the filter's nominal cutoff frequency (in Hz). */
-    void setCutoff(double newCutoff); 
+    void setCutoff(double newCutoff);
 
     /** Sets the resonance amount for the filter. */
     void setResonance(double newResonance) { filter.setResonance(newResonance); }
 
-    /** Sets the modulation depth of the filter's cutoff frequency by the filter-envelope generator 
+    /** Sets the modulation depth of the filter's cutoff frequency by the filter-envelope generator
     (in percent). */
     void setEnvMod(double newEnvMod);
 
-    /** Sets the main envelope's decay time for non-accented notes (in milliseconds). 
-    Devil Fish provides range of 30...3000 ms for this parameter. On the normal 303, this 
+    /** Sets the main envelope's decay time for non-accented notes (in milliseconds).
+    Devil Fish provides range of 30...3000 ms for this parameter. On the normal 303, this
     parameter had a range of 200...2000 ms.  */
     void setDecay(double newDecay) { normalDecay = newDecay; }
 
@@ -70,23 +70,23 @@ namespace rosic
     void setAccent(double newAccent);
 
     /** Sets the master volume level (in dB). */
-    void setVolume(double newVolume);     
+    void setVolume(double newVolume);
 
     //  from here: parameter settings which were not available to the user in the 303:
 
-    /** Sets the amplitudes envelope's sustain level in decibels. Devil Fish uses the second half 
-    of the range of the (amplitude) decay pot for this and lets the user adjust it between 0 
+    /** Sets the amplitudes envelope's sustain level in decibels. Devil Fish uses the second half
+    of the range of the (amplitude) decay pot for this and lets the user adjust it between 0
     and 100% of the full volume. In the normal 303, this parameter was fixed to zero. */
     void setAmpSustain(double newAmpSustain) { ampEnv.setSustainInDecibels(newAmpSustain); }
 
-    /** Sets the drive (in dB) for the tanh-shaper for 303-square waveform - internal parameter, to 
+    /** Sets the drive (in dB) for the tanh-shaper for 303-square waveform - internal parameter, to
     be scrapped eventually. */
-    void setTanhShaperDrive(double newDrive) 
+    void setTanhShaperDrive(double newDrive)
     { waveTable2.setTanhShaperDriveFor303Square(newDrive); }
 
-    /** Sets the offset (as raw value for the tanh-shaper for 303-square waveform - internal 
+    /** Sets the offset (as raw value for the tanh-shaper for 303-square waveform - internal
     parameter, to be scrapped eventually. */
-    void setTanhShaperOffset(double newOffset) 
+    void setTanhShaperOffset(double newOffset)
     { waveTable2.setTanhShaperOffsetFor303Square(newOffset); }
 
     /** Sets the cutoff frequency for the highpass before the main filter. */
@@ -105,44 +105,44 @@ namespace rosic
     /** Sets the slide-time (in ms). The TB-303 had a slide time of 60 ms. */
     void setSlideTime(double newSlideTime);
 
-    /** Sets the filter envelope's attack time for non-accented notes (in milliseconds). 
+    /** Sets the filter envelope's attack time for non-accented notes (in milliseconds).
     Devil Fish provides range of 0.3...30 ms for this parameter. */
-    void setNormalAttack(double newNormalAttack) 
-    { 
-      normalAttack = newNormalAttack; 
+    void setNormalAttack(double newNormalAttack)
+    {
+      normalAttack = newNormalAttack;
       rc1.setTimeConstant(normalAttack);
     }
 
-    /** Sets the filter envelope's attack time for accented notes (in milliseconds). In the 
+    /** Sets the filter envelope's attack time for accented notes (in milliseconds). In the
     Devil Fish, accented notes have a fixed attack time of 3 ms.  */
-    void setAccentAttack(double newAccentAttack) 
-    { 
-      accentAttack = newAccentAttack; 
+    void setAccentAttack(double newAccentAttack)
+    {
+      accentAttack = newAccentAttack;
       rc2.setTimeConstant(accentAttack);
     }
 
-    /** Sets the filter envelope's decay time for accented notes (in milliseconds). 
-    Devil Fish provides range of 30...3000 ms for this parameter. On the normal 303, this 
+    /** Sets the filter envelope's decay time for accented notes (in milliseconds).
+    Devil Fish provides range of 30...3000 ms for this parameter. On the normal 303, this
     parameter was fixed to 200 ms.  */
     void setAccentDecay(double newAccentDecay) { accentDecay = newAccentDecay; }
 
-    /** Sets the amplitudes envelope's decay time (in milliseconds). Devil Fish provides range of 
-    16...3000 ms for this parameter. On the normal 303, this parameter was fixed to 
+    /** Sets the amplitudes envelope's decay time (in milliseconds). Devil Fish provides range of
+    16...3000 ms for this parameter. On the normal 303, this parameter was fixed to
     approximately 3-4 seconds.  */
     void setAmpDecay(double newAmpDecay) { ampEnv.setDecay(newAmpDecay); }
 
-    /** Sets the amplitudes envelope's release time (in milliseconds). On the normal 303, this 
+    /** Sets the amplitudes envelope's release time (in milliseconds). On the normal 303, this
     parameter was fixed to .....  */
-    void setAmpRelease(double newAmpRelease) 
-    { 
+    void setAmpRelease(double newAmpRelease)
+    {
       normalAmpRelease = newAmpRelease;
-      ampEnv.setRelease(newAmpRelease); 
+      ampEnv.setRelease(newAmpRelease);
     }
 
     //-----------------------------------------------------------------------------------------------
     // inquiry:
 
-    /** Returns the waveform as a continuous value between 0...1 where 0 means pure saw and 1 means 
+    /** Returns the waveform as a continuous value between 0...1 where 0 means pure saw and 1 means
     pure square. */
     double getWaveform() const { return oscillator.getBlendFactor(); }
 
@@ -155,7 +155,7 @@ namespace rosic
     /** Returns the filter's resonance amount (in percent) */
     double getResonance() const { return filter.getResonance(); }
 
-    /** Returns the modulation depth of the filter's cutoff frequency by the filter-envelope 
+    /** Returns the modulation depth of the filter's cutoff frequency by the filter-envelope
     generator (in percent). */
     double getEnvMod() const { return envMod; }
 
@@ -173,20 +173,20 @@ namespace rosic
     /** Returns the amplitudes envelope's sustain level (in dB). */
     double getAmpSustain() const { return amp2dB(ampEnv.getSustain()); }
 
-    /** Returns the drive (in dB) for the tanh-shaper for 303-square waveform - internal parameter, 
+    /** Returns the drive (in dB) for the tanh-shaper for 303-square waveform - internal parameter,
     to be scrapped eventually. */
-    double getTanhShaperDrive() const 
+    double getTanhShaperDrive() const
     { return waveTable2.getTanhShaperDriveFor303Square(); }
 
-    /** Returns the offset (as raw value for the tanh-shaper for 303-square waveform - internal 
-    parameter, to be scrapped eventually. */   
-    double getTanhShaperOffset() const 
+    /** Returns the offset (as raw value for the tanh-shaper for 303-square waveform - internal
+    parameter, to be scrapped eventually. */
+    double getTanhShaperOffset() const
     { return waveTable2.getTanhShaperOffsetFor303Square(); }
 
     /** Returns the cutoff frequency for the highpass before the main filter. */
     double getPreFilterHighpass() const { return highpass1.getCutoff(); }
 
-    /** Retruns the cutoff frequency for the highpass inside the feedback loop of the main 
+    /** Retruns the cutoff frequency for the highpass inside the feedback loop of the main
     filter. */
     double getFeedbackHighpass() const { return filter.getFeedbackHighpassCutoff(); }
 
@@ -219,48 +219,48 @@ namespace rosic
     // audio processing:
 
     /** Calculates onse output sample at a time. */
-    double getSample(); 
+    double getSample();
 
     //-----------------------------------------------------------------------------------------------
     // event handling:
 
-    /** Accepts note-on events (note offs are also handled here as note ons with velocity zero). */ 
+    /** Accepts note-on events (note offs are also handled here as note ons with velocity zero). */
     void noteOn(int noteNumber, int velocity);
-    
+
     /** Turns all possibly running notes off. */
     void allNotesOff();
 
-    /** Sets the pitchbend value in semitones. */ 
-    void setPitchBend(double newPitchBend);  
+    /** Sets the pitchbend value in semitones. */
+    void setPitchBend(double newPitchBend);
 
     //-----------------------------------------------------------------------------------------------
-    // embedded objects: 
+    // embedded objects:
 
     MipMappedWaveTable        waveTable1, waveTable2;
     BlendOscillator           oscillator;
     TeeBeeFilter              filter;
-    AnalogEnvelope            ampEnv; 
+    AnalogEnvelope            ampEnv;
     DecayEnvelope             mainEnv;
     LeakyIntegrator           pitchSlewLimiter;
     //LeakyIntegrator           ampDeClicker;
     BiquadFilter              ampDeClicker;
     LeakyIntegrator           rc1, rc2;
-    OnePoleFilter             highpass1, highpass2, allpass; 
+    OnePoleFilter             highpass1, highpass2, allpass;
     BiquadFilter              notch;
     EllipticQuarterBandFilter antiAliasFilter;
     AcidSequencer             sequencer;
 
   protected:
 
-    /** Triggers a note (called either directly in noteOn or in getSample when the sequencer is 
+    /** Triggers a note (called either directly in noteOn or in getSample when the sequencer is
     used). */
     void triggerNote(int noteNumber, bool hasAccent);
 
-    /** Slides to a note (called either directly in noteOn or in getSample when the sequencer is 
+    /** Slides to a note (called either directly in noteOn or in getSample when the sequencer is
     used). */
     void slideToNote(int noteNumber, bool hasAccent);
 
-    /** Releases a note (called either directly in noteOn or in getSample when the sequencer is 
+    /** Releases a note (called either directly in noteOn or in getSample when the sequencer is
     used). */
     void releaseNote(int noteNumber);
 
@@ -360,30 +360,30 @@ namespace rosic
     oscillator.setFrequency(instFreq*pitchWheelFactor);
     oscillator.calculateIncrement();
 
-    // calculate instantaneous cutoff frequency from the nominal cutoff and all its modifiers and 
+    // calculate instantaneous cutoff frequency from the nominal cutoff and all its modifiers and
     // set up the filter:
     double mainEnvOut = mainEnv.getSample();
     double tmp1       = n1 * rc1.getSample(mainEnvOut);
     double tmp2       = 0.0;
     if( accentGain > 0.0 )
       tmp2 = mainEnvOut;
-    tmp2 = n2 * rc2.getSample(tmp2);  
+    tmp2 = n2 * rc2.getSample(tmp2);
     tmp1 = envScaler * ( tmp1 - envOffset );  // seems not to work yet
     tmp2 = accentGain*tmp2;
     double instCutoff = cutoff * pow(2.0, tmp1+tmp2);
     filter.setCutoff(instCutoff);
 
     double ampEnvOut = ampEnv.getSample();
-    //ampEnvOut += 0.45*filterEnvOut + accentGain*6.8*filterEnvOut; 
+    //ampEnvOut += 0.45*filterEnvOut + accentGain*6.8*filterEnvOut;
     if( ampEnv.isNoteOn() )
-      ampEnvOut += (0.45 + 4 * accentGain) * mainEnvOut; 
+      ampEnvOut += (0.45 + 4 * accentGain) * mainEnvOut;
     ampEnvOut = ampDeClicker.getSample(ampEnvOut);
 
     // oversampled calculations:
     double tmp;
     for(int i=1; i<=oversampling; i++)
     {
-      tmp  = -oscillator.getSample();         // the raw oscillator signal 
+      tmp  = -oscillator.getSample();         // the raw oscillator signal
       tmp  = highpass1.getSample(tmp);        // pre-filter highpass
       tmp  = filter.getSample(tmp);           // now it's filtered
       tmp  = antiAliasFilter.getSample(tmp);  // anti-aliasing filtered
@@ -393,14 +393,14 @@ namespace rosic
     // these filters may actually operate without oversampling (but only if we reset them in
     // triggerNote - avoid clicks)
     tmp  = allpass.getSample(tmp);
-    tmp  = highpass2.getSample(tmp);        
+    tmp  = highpass2.getSample(tmp);
     tmp  = notch.getSample(tmp);
     tmp *= ampEnvOut;                       // amplified
     tmp *= ampScaler;
 
     // find out whether we may switch ourselves off for the next call:
     idle = false;
-    //idle = (sequencer.getSequencerMode() == AcidSequencer::OFF && ampEnv.endIsReached() 
+    //idle = (sequencer.getSequencerMode() == AcidSequencer::OFF && ampEnv.endIsReached()
     //        && fabs(tmp) < 0.000001); // ampEnvOut < 0.000001;
 
     return tmp;
@@ -408,4 +408,4 @@ namespace rosic
 
 }
 
-#endif 
+#endif

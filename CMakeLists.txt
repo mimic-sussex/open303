@@ -41,5 +41,5 @@ add_library(open303
      Source/DSPCode/rosic_RealFunctions.cpp
      Source/DSPCode/rosic_RealFunctions.h
      Source/DSPCode/rosic_TeeBeeFilter.cpp
-     Source/DSPCode/rosic_TeeBeeFilter.h    
+     Source/DSPCode/rosic_TeeBeeFilter.h
 )
