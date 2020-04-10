@@ -36,6 +36,9 @@ EMSCRIPTEN_BINDINGS(Open303) {
 			.function("setAccentDecay", &Open303::setAccentDecay)
 			.function("setAmpDecay", &Open303::setAmpDecay)
 			.function("setAmpRelease", &Open303::setAmpRelease)
+			.function("triggerNote", &Open303::triggerNote)
+			.function("slideToNote", &Open303::slideToNote)
+			.function("releaseNote", &Open303::noteOn)
 			.function("noteOn", &Open303::noteOn)
 			.function("setPitchBend", &Open303::setPitchBend)
 		;

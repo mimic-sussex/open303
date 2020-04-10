@@ -250,7 +250,8 @@ namespace rosic
     EllipticQuarterBandFilter antiAliasFilter;
     AcidSequencer             sequencer;
 
-  protected:
+
+    //update: expose these methods to expand sequencing possibilities
 
     /** Triggers a note (called either directly in noteOn or in getSample when the sequencer is
     used). */
@@ -263,6 +264,8 @@ namespace rosic
     /** Releases a note (called either directly in noteOn or in getSample when the sequencer is
     used). */
     void releaseNote(int noteNumber);
+
+  protected:
 
     /** Sets the decay-time of the main envelope and updates the normalizers n1, n2 accordingly. */
     void setMainEnvDecay(double newDecay);
