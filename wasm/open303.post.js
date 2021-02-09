@@ -4,7 +4,7 @@
 
 console.log(
 	"running%c Open303 (Wasm)",
-	"font-weight: bold; background: #222; color: #bada55"
+	"font-weight: bold; color: #bada55"
 );
 
 
