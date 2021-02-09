@@ -27,7 +27,7 @@ CFLAGS=--bind -O3\
 	-s TOTAL_MEMORY=16Mb  \
 	-s "EXPORT_NAME='Open303'" \
   -s "BINARYEN_METHOD='native-wasm'" \
-  --js-opts 0 -g4 --source-map-base "http://localhost:9000/audio-worklet/build/"
+  --js-opts 0 -g4 --source-map-base "${BUILD_DIR}/"
 
 
 	# For optimisations and compiler settings
