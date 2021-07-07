@@ -40,6 +40,7 @@ EMSCRIPTEN_BINDINGS(Open303) {
 			.function("slideToNote", &Open303::slideToNote)
 			.function("releaseNote", &Open303::noteOn)
 			.function("noteOn", &Open303::noteOn)
+			.function("allNotesOff", &Open303::allNotesOff)
 			.function("setPitchBend", &Open303::setPitchBend)
 		;
 };
